@@ -31,10 +31,10 @@ steps:
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-$(python.version).zip
     replaceExistingArchive: true
     
-# - script: |
-#     mkdir "$(Build.ArtifactStagingDirectory)\my_artifact"
-#     xcopy /E /I /H /R /Y * "$(Build.ArtifactStagingDirectory)\my_artifact\"
-#   displayName: 'Stage Build Artifacts'
+- script: |
+    mkdir "$(Build.ArtifactStagingDirectory)\my_artifact"
+    xcopy /E /I /H /R /Y * "$(Build.ArtifactStagingDirectory)\my_artifact\"
+  displayName: 'Stage Build Artifacts'
 
 # - task: PublishBuildArtifacts@1
 #   inputs:
@@ -53,7 +53,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: drop
-    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    TargetPath: '$(Build.ArtifactStagingDirectory)/my_artifact'
     publishLocation: 'FilePath'
   displayName: 'Public artifact'
   
