@@ -1,13 +1,6 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
-# pool:
-#   vmImage: ubuntu-latest
 pool:
   name: Default
   demands:
@@ -26,7 +19,6 @@ steps:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '$(python.version)'
-      addToPath: true
     displayName: 'Use Python $(python.version)'
 
   - script: |
@@ -47,10 +39,15 @@ steps:
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
-      publishLocation: 'FilePath'
-      TargetPath: 'C:\Devops_azure'
+      publishLocation: 'Container'
 
   - script: |
       pip install pytest pytest-azurepipelines
       pytest
     displayName: 'pytest'
+
+  - script: |
+      echo "Deploying to local agent directory C:\Devops_azure"
+      xcopy /E /I /H $(System.DefaultWorkingDirectory) "C:\Devops_azure\simple-python-website"
+    displayName: 'Deploy to Local Agent'
+
