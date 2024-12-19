@@ -41,7 +41,7 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'FilePath'
     TargetPath: 'C:\Devops_azure'
-  displayName: 'Publish Artifact'
+  displayName: 'my_artifact'
     
 - script: |
     pip install pytest pytest-azurepipelines
