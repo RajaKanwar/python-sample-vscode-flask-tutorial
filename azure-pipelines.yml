@@ -54,7 +54,7 @@ steps:
   inputs:
     ArtifactName: drop
     TargetPath: '$(Build.ArtifactStagingDirectory)/my_artifact'
-    publishLocation: 'FilePath'
+    publishLocation: 'pipeline'
   displayName: 'Public artifact'
   
 - script: |
