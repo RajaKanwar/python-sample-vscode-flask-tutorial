@@ -30,7 +30,11 @@ steps:
     archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-$(python.version).zip
     replaceExistingArchive: true
-
+    
+- script: |
+    mkdir -p $(Build.ArtifactStagingDirectory)/my_artifact
+    cp -r * $(Build.ArtifactStagingDirectory)/my_artifact/
+  displayName: 'Stage Build Artifacts'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/my_artifact'
