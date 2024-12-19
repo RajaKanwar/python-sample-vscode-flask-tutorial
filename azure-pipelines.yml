@@ -31,25 +31,25 @@ steps:
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-$(python.version).zip
     replaceExistingArchive: true
     
-- script: |
-    mkdir "$(Build.ArtifactStagingDirectory)\my_artifact"
-    xcopy /E /I /H /R /Y * "$(Build.ArtifactStagingDirectory)\my_artifact\"
-  displayName: 'Stage Build Artifacts'
+# - script: |
+#     mkdir "$(Build.ArtifactStagingDirectory)\my_artifact"
+#     xcopy /E /I /H /R /Y * "$(Build.ArtifactStagingDirectory)\my_artifact\"
+#   displayName: 'Stage Build Artifacts'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/my_artifact'
-    ArtifactName: drop
-    publishLocation: 'FilePath'
-    TargetPath: 'C:\Devops_azure'
-  displayName: 'my_artifact'
-  
 # - task: PublishBuildArtifacts@1
 #   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/my_artifact'
 #     ArtifactName: drop
-#     TargetPath: '$(Build.ArtifactStagingDirectory)'
-#     publishLocation: 'pipeline'
-#   displayName: 'Public artifact'
+#     publishLocation: 'FilePath'
+#     TargetPath: 'C:\Devops_azure'
+#   displayName: 'my_artifact'
+  
+- task: PublishBuildArtifacts@1
+  inputs:
+    ArtifactName: drop
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    publishLocation: 'pipeline'
+  displayName: 'Public artifact'
 
 - script: |
     pip install pytest pytest-azurepipelines
