@@ -32,8 +32,8 @@ steps:
     replaceExistingArchive: true
     
 - script: |
-    mkdir -p $(Build.ArtifactStagingDirectory)/my_artifact
-    cp -r * $(Build.ArtifactStagingDirectory)/my_artifact/
+    mkdir "$(Build.ArtifactStagingDirectory)\my_artifact"
+    xcopy /E /I /H /R /Y * "$(Build.ArtifactStagingDirectory)\my_artifact\"
   displayName: 'Stage Build Artifacts'
 - task: PublishBuildArtifacts@1
   inputs:
