@@ -52,7 +52,7 @@ steps:
 #   displayName: 'Public artifact'
 - task: PublishBuildArtifacts@1
   inputs:
-    ArtifactName: 'drop'
+    ArtifactName: drop
     TargetPath: '$(Build.ArtifactStagingDirectory)'
     publishLocation: 'FilePath'
   displayName: 'Public artifact'
