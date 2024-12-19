@@ -10,12 +10,12 @@ strategy:
       python.version: '3.12'
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
-  env:
-    GITHUB_TOKEN: $(GITHUB_TOKEN)
+# - task: UsePythonVersion@0
+#   inputs:
+#     versionSpec: '$(python.version)'
+#   displayName: 'Use Python $(python.version)'
+#   env:
+#     GITHUB_TOKEN: $(GITHUB_TOKEN)
 
 - script: |
     python -m pip install --upgrade pip
