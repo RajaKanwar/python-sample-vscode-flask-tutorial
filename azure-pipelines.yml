@@ -33,10 +33,11 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/my_artifact'
     ArtifactName: 'drop'
     publishLocation: 'FilePath'
     TargetPath: 'C:\Devops_azure'
+  displayName: 'Publish Artifact'
     
 - script: |
     pip install pytest pytest-azurepipelines
